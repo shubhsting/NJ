@@ -76,6 +76,26 @@ yargs.command({
         notes.removeNotes(argv.title)
     }
 })
+yargs.command({
+    command: 'list',
+    describe: 'list all notes title',
+    handler(argv) {
+        notes.listNotes()
+    }
+})
+yargs.command({
+    command: 'read',
+    describe: 'read a title and body',
+    builder: {
+        title: {
+            describe: 'add title',
+            demandOption: true,
+            type: 'string'
+        }
 
-
+    },
+    handler(argv) {
+        notes.readNote(argv.title)
+    }
+})
 yargs.argv
