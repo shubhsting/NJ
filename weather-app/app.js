@@ -10,13 +10,23 @@ var forecast = require('./utils/forecast.js')
 //     console.log("Error is -> ", error);
 //     console.log("Data is -> ", data)
 // })
-geocode("delhi", (error, datap) => {
-    if (error) console.log(error)
-    else
-        forecast(datap.latitude, datap.longitude, (error, data) => {
-            console.log(datap.location)
-            console.log('Error', error)
-            console.log('Data', data)
-        })
-})
 
+
+// console.log(process.argv)
+const city = process.argv[2]
+if (!city) console.log('Please add city in command Line!!!!!!...')
+else {
+    geocode(process.argv[2], (error, datap) => {
+        if (error) console.log(error)
+        else
+            forecast(datap.latitude, datap.longitude, (error, data) => {
+                if(error)
+                console.log('Error', error)
+                else{
+                console.log(datap.location)
+                console.log('Data', data)
+                }
+            })
+    })
+
+}

@@ -38,7 +38,7 @@ const forecast = (lat, long, callback) => {
             callback(response.body.message, undefined)
         else
             callback(undefined, {
-                location: response.body.timezone,
+                // location: response.body.timezone,
                 temp: response.body.current.temp,
                 chances: response.body.current.weather[0].description
             })
